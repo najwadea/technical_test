@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bankku Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: "Inter", sans-serif;
+      }
+
+      .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        background-color: white;
+        border-right: 1px solid #dee2e6;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        color: #6c757d;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover,
+      .sidebar a.active {
+        background-color: #f0f2f5;
+        color: #0d6efd;
+      }
+
+      .sidebar a i {
+        margin-right: 10px;
+      }
+
+      .main {
+        margin-left: 260px;
+        padding: 40px;
+      }
+
+      .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      label.form-label {
+        font-size: 0.9rem;
+      }
+
+      input.form-control,
+      select.form-select {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.75rem;
+        border-radius: 0.5rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        border-radius: 0.5rem;
+      }
+
+      @media (max-width: 991.98px) {
+        .sidebar {
+          transform: translateX(-100%);
+          position: fixed;
+          z-index: 1050;
+        }
+
+        .sidebar.show {
+          transform: translateX(0);
+        }
+
+        .main {
+          margin-left: 0;
+          padding: 20px;
+        }
+
+        .mobile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          background-color: white;
+          border-bottom: 1px solid #dee2e6;
+          position: sticky;
+          top: 0;
+          z-index: 1020;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Header -->
+    <div class="mobile-header d-lg-none">
+      <button class="btn btn-outline-primary" id="menuToggle">
+        <i class="bi bi-list fs-3"></i>
+      </button>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebarMenu">
+      <div class="text-center p-3 border-bottom">
+        <img src="logo.png" alt="Bankku Logo" height="30" />
+      </div>
+      <a href="dashboard.html"><i class="bi bi-house-door"></i>Dashboard</a>
+      <a href="#"><i class="bi bi-credit-card-2-front"></i>Transactions</a>
+      <a href="#"><i class="bi bi-person-badge"></i>Accounts</a>
+      <a href="#"><i class="bi bi-graph-up"></i>Investments</a>
+      <a href="#"><i class="bi bi-credit-card"></i>Credit Cards</a>
+      <a href="loans.html"><i class="bi bi-cash-stack"></i>Loans</a>
+      <a href="#"><i class="bi bi-gear"></i>Services</a>
+      <a href="#"><i class="bi bi-gift"></i>My Privileges</a>
+      <a href="settings.html" class="active"><i class="bi bi-sliders"></i>Setting</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="container-fluid px-0">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+          <h5 class="mb-0" style="font-size: 28px; color: #343c6a">Setting</h5>
+          <div class="d-flex align-items-center gap-3">
+            <div class="input-group bg-light rounded-pill px-2" style="width: 250px">
+              <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-secondary"></i></span>
+              <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for something" />
+            </div>
+            <i class="bi bi-gear text-secondary fs-5"></i>
+            <i class="bi bi-bell text-danger fs-5"></i>
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="profile-pic" alt="" />
+          </div>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-4 p-4 shadow-sm">
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mb-4 flex-wrap">
+            <li class="nav-item">
+              <a class="nav-link active tab-link" style="color: #1814f3; font-size: 16px" href="settings.html">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted" href="preferences.html">Preferences</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-muted" href="security.html">Security</a>
+            </li>
+          </ul>
+
+          <!-- Form -->
+          <form>
+            <div class="row mb-4">
+              <div class="col-md-2 d-flex flex-column align-items-center mb-3 mb-md-0">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="profile-pic" alt="Profile Picture" />
+                <i class="bi bi-pencil-square text-primary mt-2"></i>
+              </div>
+              <div class="col-md-10">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Your Name</label>
+                    <input type="text" class="form-control" value="Charlene Reed" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">User Name</label>
+                    <input type="text" class="form-control" value="Charlene Reed" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Email</label>
+                    <input type="email" class="form-control" value="charlenereed@gmail.com" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Password</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" id="passwordInput" value="********" style="color: #718ebf; font-size: 15px" />
+                      <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="bi bi-eye" id="toggleIcon"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Date of Birth</label>
+                    <input type="text" class="form-control" value="25 January 1990" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Present Address</label>
+                    <input type="text" class="form-control" value="San Jose, California, USA" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Permanent Address</label>
+                    <input type="text" class="form-control" value="San Jose, California, USA" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">City</label>
+                    <input type="text" class="form-control" value="San Jose" style="color: #718ebf; font-size: 15px" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Postal Code</label>
+                    <input type="text" class="form-control" value="45962" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" style="color: #232323; font-size: 16px">Country</label>
+                    <input type="text" class="form-control" value="USA" style="color: #718ebf; font-size: 15px" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 text-end">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Toggle Sidebar -->
+    <script>
+      document.getElementById("menuToggle").addEventListener("click", function () {
+        document.getElementById("sidebarMenu").classList.toggle("show");
+      });
+
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("passwordInput");
+      const toggleIcon = document.getElementById("toggleIcon");
+
+      togglePassword.addEventListener("click", function () {
+        const isPassword = passwordInput.type === "password";
+        passwordInput.type = isPassword ? "text" : "password";
+        toggleIcon.classList.toggle("bi-eye");
+        toggleIcon.classList.toggle("bi-eye-slash");
+      });
+    </script>
+  </body>
+</html>
